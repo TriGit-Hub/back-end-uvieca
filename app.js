@@ -3,12 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var db = require("./src/database/dbconnection");
+require("./src/database/dbconnection");
 var passport = require('passport');
 var passportMiddleware = require('./src/middlewares/passportConfig');
 var {grantRoles} = require('./src/middlewares/grantRoles');
 
-db.connect();
+//db.connect();
 var indexRouter = require('./src/routes/index');
 var handlers = require("./src/middlewares/handlers");
 
@@ -19,9 +19,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-//db.syncTables();
-
 //config
 
 passport.use('jwt', passportMiddleware.JwtStrategy)

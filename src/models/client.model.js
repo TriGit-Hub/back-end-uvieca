@@ -34,13 +34,17 @@ const clientes = sequelize.define('clientes', {
     },
     copia_ncr_id: {
         type: DataTypes.BIGINT,
-    },
-    aaaa: {
-        type: DataTypes.BIGINT,
     }
 },
     {
-        freezeTableName: true
-    })
+        freezeTableName: true});
 
-console.log(clientes === sequelize.models.clientes);
+module.exports = clientes;
+
+/*(async () => {
+    await clientes.sync({ alter: true });
+
+    console.log(clientes === sequelize.models.clientes);
+})();*/
+
+

@@ -4,51 +4,25 @@ const dbhost = process.env.DBHOST || "localhost";
 const dbport = process.env.DBPORT || "27017";
 const dbname = process.env.DBNAME;
 
+require('../models/client.model')
+require('../models/copias_nit.model')
+
 const uri = process.env.DBURI || `mongodb://${dbhost}:${dbport}/${dbname}`
 
-const connect = async () => {
+const sequelize = new Sequelize(uri);
 
-    const sequelize = new Sequelize(uri);
+sequelize.authenticate(uri)
+    .then(()=> {
+        console.log('Successfull')
+    })
 
-    try {
-        await sequelize.authenticate();
-        console.log("Connection succesfull");
+const db = {}
 
-    } catch (error) {
-        console.log("Connection failed", error);
-        process.exit(1);
-    }
-};
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-/**
- * Disconnect method
- */
-const disconnect = async () => {
-    try {
+/*db.sequelize.sync({ alter: true }).then(() => {
+    console.log("re-sync db.");
+});*/
 
-    } catch (error) {
-
-    }
-}
-
-/**
- * Sync tables method
- */
-const syncTables = async () => {
-    const sequelize = new Sequelize(uri);
-
-    try {
-        await sequelize.sync({force: true});
-        console.log("Tables sync");
-
-    } catch (error) {
-        console.log("Connection failed", error);
-        process.exit(1);
-    }
-}
-
-module.exports = {
-    connect,
-    disconnect,
-    syncTables
-}
+module.exports = db;

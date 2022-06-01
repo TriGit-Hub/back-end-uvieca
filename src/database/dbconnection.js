@@ -6,6 +6,7 @@ const dbname = process.env.DBNAME;
 
 require('../models/client.model')
 require('../models/copias_nit.model')
+require('../models/constituciones_emp')
 require('../models/copias_ncr')
 
 const uri = process.env.DBURI || `mongodb://${dbhost}:${dbport}/${dbname}`

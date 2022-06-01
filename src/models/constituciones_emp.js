@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.DBURI);
 
-const copiasncr = sequelize.define('copiasncr', {
+const constituciones_emp = sequelize.define('constituciones_emp', {
         img: {
             type: DataTypes.STRING,
         }
@@ -10,8 +10,8 @@ const copiasncr = sequelize.define('copiasncr', {
         freezeTableName: true
     });
 
-module.exports = copiasncr;
+module.exports = constituciones_emp;
 
 /*(async () => {
-    await copiasncr.sync({ alter: true });
+    await constituciones_emp.sync({ alter: true });
 })();*/

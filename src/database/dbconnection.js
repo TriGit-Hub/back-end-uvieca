@@ -31,7 +31,24 @@ const disconnect = async () => {
     }
 }
 
+/**
+ * Sync tables method
+ */
+const syncTables = async () => {
+    const sequelize = new Sequelize(uri);
+
+    try {
+        await sequelize.sync({force: true});
+        console.log("Tables sync");
+
+    } catch (error) {
+        console.log("Connection failed", error);
+        process.exit(1);
+    }
+}
+
 module.exports = {
     connect,
-    disconnect
+    disconnect,
+    syncTables
 }

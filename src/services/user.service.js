@@ -1,5 +1,4 @@
 const ServiceResponse = require("../responses/ServiceResponse");
-const userModel = require("../models/client.model");
 const bcrypt = require("bcrypt");
 const Errors = require('../errors');
 

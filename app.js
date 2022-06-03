@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-require("./src/database/dbconnection");
+var db = require("./src/database/dbconnection");
 var passport = require('passport');
 var passportMiddleware = require('./src/middlewares/passportConfig');
 var {grantRoles} = require('./src/middlewares/grantRoles');
@@ -24,6 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 passport.use('jwt', passportMiddleware.JwtStrategy)
 
 app.use('/', indexRouter);
+
+//db.sequelize.sync({alter:true});
+
+db.sync();
 
 app.use(handlers.errorHandler);
 

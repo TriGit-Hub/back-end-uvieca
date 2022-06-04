@@ -18,10 +18,13 @@ const db = {}
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+//models instances
+
 db.Clientes = require('../models/client.model')(sequelize);
 db.Contituciones_emp = require('../models/constituciones_emp')(sequelize);
 db.Copias_ncr = require('../models/copias_ncr')(sequelize);
 db.Copias_nit = require('../models/copias_nit.model')(sequelize);
+db.Inspeccion = require('../models/inspeccion.model')(sequelize);
 
 //asociations
 

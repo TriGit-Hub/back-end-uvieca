@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const inspeccion = (sequelize) => {
     const inspeccion = sequelize.define('inspeccion', {
-            img: {
+            detalles: {
                 type: DataTypes.STRING,
             }
         },

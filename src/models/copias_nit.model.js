@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const copiasnit = (sequelize) => {
-    const copias_nit = sequelize.define('copiasnit', {
+    const copias_nit = sequelize.define('copia_nit', {
             img: {
                 type: DataTypes.STRING,
             }

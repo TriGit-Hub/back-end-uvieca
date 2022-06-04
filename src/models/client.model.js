@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes} = require('sequelize');
 
 const clientes = (sequelize) => {
-    const clientes = sequelize.define('clientes', {
+    const clientes = sequelize.define('cliente', {
             act_economica: {
                 type: DataTypes.STRING,
             },

@@ -19,10 +19,13 @@ const clientes = (sequelize) => {
             nit: {
                 type: DataTypes.STRING,
             },
-            nombre: {
-                type: DataTypes.STRING,
+            constitucion_empresa: {
+                type: DataTypes.BIGINT,
             },
             nrc: {
+                type: DataTypes.STRING,
+            },
+            nombre: {
                 type: DataTypes.STRING,
             },
             razon_social: {
@@ -30,15 +33,6 @@ const clientes = (sequelize) => {
             },
             telefono: {
                 type: DataTypes.STRING,
-            },
-            constitucion_empresa: {
-                type: DataTypes.BIGINT,
-            },
-            copia_nit_id: {
-                type: DataTypes.BIGINT,
-            },
-            copia_ncr_id: {
-                type: DataTypes.BIGINT,
             }
         },
         {

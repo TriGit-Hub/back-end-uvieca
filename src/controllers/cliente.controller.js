@@ -4,6 +4,14 @@ const Services = require('../services/index')
 
 const clienteController = {}
 
+clienteController.save = async (req, res, next) => {
+    try {
+        console.log(req.body);
+    } catch (e) {
+
+    }
+};
+
 clienteController.findAll = async (req, res, next) => {
     try {
         const {status, content} = await Services.clienteService.findAll();

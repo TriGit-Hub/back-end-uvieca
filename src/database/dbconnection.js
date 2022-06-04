@@ -21,10 +21,10 @@ db.Sequelize = Sequelize;
 //models instances
 
 db.Clientes = require('../models/client.model')(sequelize);
-db.Contituciones_emp = require('../models/constituciones_emp')(sequelize);
-db.Copia_carnet = require('../models/copia_carnet')(sequelize);
-db.Copia_dui = require('../models/copia_dui')
-db.Copias_ncr = require('../models/copias_ncr')(sequelize);
+db.Contituciones_emp = require('../models/constituciones_emp.model')(sequelize);
+db.Copia_carnet = require('../models/copia_carnet.model')(sequelize);
+db.Copia_dui = require('../models/copia_dui.model')
+db.Copias_ncr = require('../models/copia_ncr.model')(sequelize);
 db.Copias_nit = require('../models/copias_nit.model')(sequelize);
 db.Inspeccion = require('../models/inspeccion.model')(sequelize);
 db.Instalacion = require('../models/instalacion.model')(sequelize);

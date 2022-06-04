@@ -22,6 +22,8 @@ db.Sequelize = Sequelize;
 
 db.Clientes = require('../models/client.model')(sequelize);
 db.Contituciones_emp = require('../models/constituciones_emp')(sequelize);
+db.Copia_carnet = require('../models/copia_carnet')(sequelize);
+db.Copia_dui = require('../models/copia_dui')
 db.Copias_ncr = require('../models/copias_ncr')(sequelize);
 db.Copias_nit = require('../models/copias_nit.model')(sequelize);
 db.Inspeccion = require('../models/inspeccion.model')(sequelize);
@@ -34,6 +36,8 @@ db.Copias_ncr.hasOne(db.Clientes);
 db.Copias_nit.hasOne(db.Clientes);
 
 db.Instalacion.hasMany(db.Inspeccion);
+
+
 
 db.sync = async () => {
 

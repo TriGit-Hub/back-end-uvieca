@@ -3,6 +3,7 @@ var router = express.Router();
 
 var userRouter = require("./users.route");
 var authRouter = require("./auth.router");
+var clienteRouter = require("./cliente.router")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,6 +12,7 @@ router.get('/', function(req, res, next) {
 
 //TODO: Add routers as needed.
 router.use("/user", userRouter);
-router.use("/auth", authRouter)
+router.use("/auth", authRouter);
+router.use("/cliente", clienteRouter);
 
 module.exports = router;

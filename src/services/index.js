@@ -1,10 +1,8 @@
-const userService = require("./user.service");
-const errorService = require("./error.service");
-
 const Services = {};
 
 //TODO: Add services as needed.
-Services.userService = userService;
-Services.errorService = errorService;
+Services.userService = require("./user.service");
+Services.errorService = require("./error.service");
+Services.clienteService = require("./clientService");
 
 module.exports = Services;

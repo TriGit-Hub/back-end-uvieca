@@ -53,9 +53,9 @@ db.sync = async () => {
 
     if(alter){
         await  sequelize.sync({alter: true});
-    }
 
-    console.log('Tables Sync!')
+        console.log('Tables Sync!')
+    }
 
 }
 

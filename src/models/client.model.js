@@ -2,6 +2,11 @@ const { Sequelize, DataTypes} = require('sequelize');
 
 const clientes = (sequelize) => {
     const clientes = sequelize.define('cliente', {
+            id: {
+                type: DataTypes.INTEGER,
+                autoIncrement: true,
+                primaryKey: true
+            },
             act_economica: {
                 type: DataTypes.STRING,
             },
@@ -17,7 +22,7 @@ const clientes = (sequelize) => {
             nombre: {
                 type: DataTypes.STRING,
             },
-            ncr: {
+            nrc: {
                 type: DataTypes.STRING,
             },
             razon_social: {

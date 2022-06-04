@@ -20,24 +20,32 @@ db.Sequelize = Sequelize;
 
 //models instances
 
-db.Clientes = require('../models/client.model')(sequelize);
-db.Contituciones_emp = require('../models/constituciones_emp.model')(sequelize);
+db.Cliente = require('../models/client.model')(sequelize);
+db.Contitucion_emp = require('../models/constituciones_emp.model')(sequelize);
 db.Copia_carnet = require('../models/copia_carnet.model')(sequelize);
-db.Copia_dui = require('../models/copia_dui.model')
-db.Copias_ncr = require('../models/copia_ncr.model')(sequelize);
-db.Copias_nit = require('../models/copias_nit.model')(sequelize);
+db.Copia_dui = require('../models/copia_dui.model')(sequelize)
+db.Copia_ncr = require('../models/copia_ncr.model')(sequelize);
+db.Copia_nit = require('../models/copias_nit.model')(sequelize);
+db.Electricista = require('../models/electricista.model')(sequelize);
 db.Inspeccion = require('../models/inspeccion.model')(sequelize);
 db.Instalacion = require('../models/instalacion.model')(sequelize);
+db.Solicitud = require('../models/solicitud.model')(sequelize);
 
 //asociations
 
-db.Contituciones_emp.hasOne(db.Clientes);
-db.Copias_ncr.hasOne(db.Clientes);
-db.Copias_nit.hasOne(db.Clientes);
+db.Contitucion_emp.hasOne(db.Cliente);
+db.Copia_ncr.hasOne(db.Cliente);
+db.Copia_nit.hasOne(db.Cliente);
 
 db.Instalacion.hasMany(db.Inspeccion);
 
+db.Copia_dui.hasOne(db.Electricista);
+db.Copia_carnet.hasOne(db.Electricista);
 
+db.Cliente.hasOne(db.Solicitud);
+db.Instalacion.hasOne(db.Solicitud);
+
+db.Solicitud.belongsToMany(db.Electricista, {through: 'solicitudxelectricista'});
 
 db.sync = async () => {
 

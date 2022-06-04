@@ -1,5 +1,4 @@
 const { Sequelize } = require('sequelize');
-const {toBoolean} = require("validator");
 
 const dbhost = process.env.DBHOST || "localhost";
 const dbport = process.env.DBPORT || "27017";
@@ -21,8 +20,16 @@ db.Sequelize = Sequelize;
 
 db.Clientes = require('../models/client.model')(sequelize);
 db.Contituciones_emp = require('../models/constituciones_emp')(sequelize);
-db.Copias_nct = require('../models/copias_ncr')(sequelize);
-db.Copiasn_nit = require('../models/copias_nit.model')(sequelize);
+db.Copias_ncr = require('../models/copias_ncr')(sequelize);
+db.Copias_nit = require('../models/copias_nit.model')(sequelize);
+
+//asociations
+
+db.Contituciones_emp.hasOne(db.Clientes);
+db.Copias_ncr.hasOne(db.Clientes);
+db.Copias_nit.hasOne(db.Clientes);
+
+
 
 db.sync = async () => {
 

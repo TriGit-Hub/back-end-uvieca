@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-const constituciones_emp = (sequelize) => {
-    sequelize.define('constituciones_emp', {
+const copias_constituciones_emp = (sequelize) => {
+    const constituciones_emp = sequelize.define('copias_constituciones_emp', {
             img: {
                 type: DataTypes.STRING,
             }
@@ -9,6 +9,8 @@ const constituciones_emp = (sequelize) => {
         {
             freezeTableName: true
         });
+
+    return constituciones_emp;
 }
 
-module.exports = constituciones_emp;
+module.exports = copias_constituciones_emp;

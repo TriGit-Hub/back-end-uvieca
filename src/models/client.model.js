@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes} = require('sequelize');
 
 const clientes = (sequelize) => {
-    sequelize.define('clientes', {
+    const clientes = sequelize.define('clientes', {
             act_economica: {
                 type: DataTypes.STRING,
             },
@@ -39,7 +39,12 @@ const clientes = (sequelize) => {
         {
             freezeTableName: true
         });
+
+    return clientes;
+
 }
+
+
 
 module.exports = clientes;
 

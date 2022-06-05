@@ -4,8 +4,7 @@ const db = require('../database/dbconnection');
 const clientService = {}
 
 //TODO: Change error attributes as needed
-clientService.save = async (act_economica, email, id_instalacion, nit, nombre, nrc, razon_social, telefono, copiaConstitucionesEmp,
-                            copiaNcrId, copiaNitId) => {
+clientService.save = async (act_economica, email, id_instalacion, nit, constitucion_empresa,nrc, nombre,razon_social, telefono) => {
 
 
     const newClient = await db.Cliente.create({
@@ -13,13 +12,14 @@ clientService.save = async (act_economica, email, id_instalacion, nit, nombre, n
         email,
         id_instalacion,
         nit,
-        nombre,
+        constitucion_empresa,
         nrc,
+        nombre,
         razon_social,
         telefono,
-        copiaConstitucionesEmp,
-        copiaNcrId,
-        copiaNitId,
+        copiaConstitucionEmpId: 1,
+        copiaNcrId: 1,
+        copiaNitId: 1,
         createdAt: Date(),
         updatedAt: Date(),
     });

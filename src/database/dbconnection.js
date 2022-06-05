@@ -21,7 +21,7 @@ db.Sequelize = Sequelize;
 //models instances
 
 db.Cliente = require('../models/client.model')(sequelize);
-db.Contitucion_emp = require('../models/constituciones_emp.model')(sequelize);
+db.Contitucion_emp = require('../models/constitucion_emp.model')(sequelize);
 db.Copia_carnet = require('../models/copia_carnet.model')(sequelize);
 db.Copia_dui = require('../models/copia_dui.model')(sequelize)
 db.Copia_ncr = require('../models/copia_ncr.model')(sequelize);

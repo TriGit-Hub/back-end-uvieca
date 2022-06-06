@@ -46,7 +46,7 @@ clientService.save = async (act_economica, email, id_instalacion, nit, constituc
 
 clientService.findAll = async () => {
 
-    const result = await db.Cliente.findAll();
+    const result = await db.Cliente.findAll({include: [db.Copia_nit, db.Copia_ncr, db.Contitucion_emp]});
 
     return ServiceResponse(true, result);
 
@@ -66,7 +66,7 @@ clientService.update = async (cliente) => {
         result[`${keysCliente[i]}`] = cliente[`${keysCliente[i]}`];
     }
 
-    const newInfo = result.save();
+    const newInfo = await result.save();
 
     return ServiceResponse(true, newInfo);
 

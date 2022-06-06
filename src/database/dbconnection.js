@@ -36,6 +36,9 @@ db.Solicitud = require('../models/solicitud.model')(sequelize);
 db.Contitucion_emp.hasOne(db.Cliente);
 db.Copia_ncr.hasOne(db.Cliente);
 db.Copia_nit.hasOne(db.Cliente);
+db.Cliente.belongsTo(db.Contitucion_emp);
+db.Cliente.belongsTo(db.Copia_ncr);
+db.Cliente.belongsTo(db.Copia_nit);
 
 db.Instalacion.hasMany(db.Inspeccion);
 

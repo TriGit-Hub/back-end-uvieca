@@ -6,7 +6,6 @@ const clientService = {}
 //TODO: Change error attributes as needed
 clientService.save = async (act_economica, email, id_instalacion, nit, constitucion_empresa, nrc, nombre, razon_social, telefono) => {
 
-
     const result = await db.sequelize.transaction(async (t) => {
 
         const newNitCopy = await db.Copia_nit.create({
@@ -43,17 +42,18 @@ clientService.save = async (act_economica, email, id_instalacion, nit, constituc
 
     return ServiceResponse(true, null);
 
-    console.log('result', result)
-
 }
 
 clientService.findAll = async () => {
-
 
     const result = await db.Cliente.findAll();
 
     return ServiceResponse(true, result);
 
+}
+
+clientService.update = async () => {
+    //const result = await  db.Cliente.update();
 }
 
 module.exports = clientService;

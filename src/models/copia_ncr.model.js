@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const {Sequelize, DataTypes} = require('sequelize');
 
 const copia_ncr = (sequelize) => {
     const copia_ncr = sequelize.define('copia_ncr', {
@@ -9,6 +9,7 @@ const copia_ncr = (sequelize) => {
             },
             img: {
                 type: DataTypes.STRING,
+                allowNull: false,
             }
         },
         {

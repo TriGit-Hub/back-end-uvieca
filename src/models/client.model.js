@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes} = require('sequelize');
+const {Sequelize, DataTypes} = require('sequelize');
 
 const clientes = (sequelize) => {
     const clientes = sequelize.define('cliente', {
@@ -10,36 +10,45 @@ const clientes = (sequelize) => {
             act_economica: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             email: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             id_instalacion: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             nit: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             constitucion_empresa: {
                 type: DataTypes.BIGINT,
                 unique: true,
+                allowNull: false,
             },
             nrc: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             nombre: {
                 type: DataTypes.STRING,
+                allowNull: false,
             },
             razon_social: {
                 type: DataTypes.STRING,
+                allowNull: false,
             },
             telefono: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             }
         },
         {
@@ -49,7 +58,6 @@ const clientes = (sequelize) => {
     return clientes;
 
 }
-
 
 
 module.exports = clientes;

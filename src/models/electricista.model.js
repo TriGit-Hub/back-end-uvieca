@@ -5,29 +5,36 @@ const electricista = (sequelize) => {
             carnet: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             dui: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             email: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             nit: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             nombre: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             registro: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
             telefono: {
                 type: DataTypes.STRING,
                 unique: true,
+                allowNull: false,
             },
         },
         {

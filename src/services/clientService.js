@@ -52,8 +52,24 @@ clientService.findAll = async () => {
 
 }
 
-clientService.update = async () => {
-    //const result = await  db.Cliente.update();
+clientService.update = async (cliente) => {
+
+    const result = await db.Cliente.findByPk(cliente.id);
+
+    if (result === null) {
+        return ServiceResponse(false, result);
+    }
+
+    const keysCliente = Object.keys(cliente);
+
+    for (let i = 0; i < keysCliente.length; i++) {
+        result[`${keysCliente[i]}`] = cliente[`${keysCliente[i]}`];
+    }
+
+    const newInfo = result.save();
+
+    return ServiceResponse(true, newInfo);
+
 }
 
 module.exports = clientService;

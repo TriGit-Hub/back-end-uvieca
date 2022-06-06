@@ -7,13 +7,13 @@ const handlers = {};
 
 handlers.errorHandler = (error, req, res, next) => {
     debug(error);
-    console.log(error);
+    console.log('',error);
 
     if (!error.statusCode) {
-        return res.status(500).json(ApiResponse(false, "Unhandled error", error));
+        return res.status(500).json(ApiResponse(false, `Unhandled error: ${error.name ? error.name : null}`, error.errors));
     }
 
-    if (error.name === "MongoError") {
+    if (error.name === "SequelizeUniqueConstraintError") {
         return res.status(500).json(ApiResponse(false, "Database Error", error.code));
     }
 

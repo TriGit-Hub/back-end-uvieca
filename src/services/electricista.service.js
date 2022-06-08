@@ -35,7 +35,9 @@ electricistaService.save = async (carnet, dui, email, nit, nombre, registro, tel
 }
 
 electricistaService.findAll = async () => {
+    const result = await db.Electricista.findAll({include: [db.Copia_dui, db.Copia_carnet]});
 
+    return ServiceResponse(true, result);
 }
 
 electricistaService.update = async () => {

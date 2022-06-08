@@ -48,8 +48,22 @@ clienteService.findAll = async () => {
 
     const result = await db.Cliente.findAll({include: [db.Copia_nit, db.Copia_ncr, db.Contitucion_emp]});
 
+    if (result.length < 1) {
+        return ServiceResponse(false, []);
+    }
+
     return ServiceResponse(true, result);
 
+}
+
+clienteService.findByNit = async (nit) => {
+    const result = await db.Cliente.findOne({where: {nit}});
+
+    if (result === null) {
+        return ServiceResponse(false, null);
+    }
+
+    return ServiceResponse(true, result);
 }
 
 clienteService.update = async (cliente) => {

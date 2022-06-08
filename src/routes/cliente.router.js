@@ -10,6 +10,7 @@ router.post("/crear", clienteController.save);
 
 //READ
 router.get("/todos", clienteController.findAll);
+router.get("/porNit/:nit", clienteController.findByNit);
 
 //UPDATE
 

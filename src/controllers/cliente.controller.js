@@ -32,10 +32,32 @@ clienteController.findAll = async (req, res, next) => {
     try {
         const {status, content} = await Services.clienteService.findAll();
 
+        if(!status){
+            return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", content));
+        }
+
         return res.status(200).json(ApiResponse(status, "Resultados exitosos", content));
     } catch (e) {
         next(e);
     }
+}
+
+clienteController.findByNit = async (req, res, next) => {
+
+    try {
+        const {nit} = req.params;
+
+        const {status, content} = await Services.clienteService.findByNit(nit);
+
+        if(!status){
+            return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", null));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Resultados exitosos", content));
+    } catch (e) {
+        next(e)
+    }
+
 }
 
 clienteController.update = async (req, res, next) => {

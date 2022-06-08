@@ -3,7 +3,7 @@ var router = express.Router();
 var {runValidation} = require('../middlewares/express-validatorConf');
 var {registerValidator, loginValidator} = require('../validators/user.validator');
 
-var electricistaController = require("../controllers/cliente.controller");
+var electricistaController = require("../controllers/electricista.controller");
 
 //CREATE
 router.post("/crear", electricistaController.save);

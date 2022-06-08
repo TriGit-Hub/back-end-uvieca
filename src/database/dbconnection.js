@@ -37,13 +37,23 @@ db.Contitucion_emp.hasOne(db.Cliente);
 db.Copia_ncr.hasOne(db.Cliente);
 db.Copia_nit.hasOne(db.Cliente);
 
+db.Cliente.belongsTo(db.Contitucion_emp);
+db.Cliente.belongsTo(db.Copia_ncr);
+db.Cliente.belongsTo(db.Copia_nit);
+
 db.Instalacion.hasMany(db.Inspeccion);
 
 db.Copia_dui.hasOne(db.Electricista);
 db.Copia_carnet.hasOne(db.Electricista);
 
+db.Electricista.belongsTo(db.Copia_dui);
+db.Electricista.belongsTo(db.Copia_carnet);
+
 db.Cliente.hasOne(db.Solicitud);
 db.Instalacion.hasOne(db.Solicitud);
+
+db.Solicitud.belongsTo(db.Cliente);
+db.Solicitud.belongsTo(db.Instalacion);
 
 db.Solicitud.belongsToMany(db.Electricista, {through: 'solicitudxelectricista'});
 

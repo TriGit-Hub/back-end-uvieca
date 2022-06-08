@@ -46,14 +46,30 @@ clienteService.save = async (act_economica, email, id_instalacion, nit, constitu
 
 clienteService.findAll = async () => {
 
-    const result = await db.Cliente.findAll();
+    const result = await db.Cliente.findAll({include: [db.Copia_nit, db.Copia_ncr, db.Contitucion_emp]});
 
     return ServiceResponse(true, result);
 
 }
 
-clienteService.update = async () => {
-    //const result = await  db.Cliente.update();
+clienteService.update = async (cliente) => {
+
+    const result = await db.Cliente.findByPk(cliente.id);
+
+    if (result === null) {
+        return ServiceResponse(false, result);
+    }
+
+    const keysCliente = Object.keys(cliente);
+
+    for (let i = 0; i < keysCliente.length; i++) {
+        result[`${keysCliente[i]}`] = cliente[`${keysCliente[i]}`];
+    }
+
+    const newInfo = await result.save();
+
+    return ServiceResponse(true, newInfo);
+
 }
 
 module.exports = clienteService;

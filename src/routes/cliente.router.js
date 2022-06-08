@@ -13,6 +13,8 @@ router.get("/todos", clienteController.findAll);
 
 //UPDATE
 
+router.put("/actualizar", clienteController.update);
+
 //DELETE
 
 module.exports = router;

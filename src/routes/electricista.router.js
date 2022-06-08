@@ -9,7 +9,7 @@ var electricistaController = require("../controllers/electricista.controller");
 router.post("/crear", electricistaController.save);
 
 //READ
-//router.get("/todos", electricistaController.findAll);
+router.get("/todos", electricistaController.findAll);
 
 //UPDATE
 

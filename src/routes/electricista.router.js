@@ -10,6 +10,7 @@ router.post("/crear", electricistaController.save);
 
 //READ
 router.get("/todos", electricistaController.findAll);
+router.get("/porDui/:dui", electricistaController.findByDui);
 
 //UPDATE
 

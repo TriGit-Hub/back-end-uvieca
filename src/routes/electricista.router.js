@@ -13,6 +13,8 @@ router.get("/todos", electricistaController.findAll);
 
 //UPDATE
 
+router.put("/actualizar", electricistaController.update);
+
 //DELETE
 
 module.exports = router;

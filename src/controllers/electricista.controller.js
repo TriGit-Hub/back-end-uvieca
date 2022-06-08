@@ -38,4 +38,14 @@ electricistaController.findAll = async (req, res, next) => {
     }
 }
 
+electricistaController.update = async (req, res, next) => {
+    try {
+        const {status, content} = await Services.electricistaService.update(req.body);
+
+        return res.status(200).json(ApiResponse(status, "Actualizado con exito", content));
+    } catch (e) {
+        next(e);
+    }
+}
+
 module.exports = electricistaController;

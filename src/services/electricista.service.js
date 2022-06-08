@@ -40,8 +40,23 @@ electricistaService.findAll = async () => {
     return ServiceResponse(true, result);
 }
 
-electricistaService.update = async () => {
+electricistaService.update = async (electricista) => {
 
+    const result = await db.Electricista.findByPk(electricista.id);
+
+    if (result === null) {
+        return ServiceResponse(false, result);
+    }
+
+    const keysElectricista = Object.keys(electricista);
+
+    for (let i = 0; i < keysElectricista.length; i++) {
+        result[`${keysElectricista[i]}`] = electricista[`${keysElectricista[i]}`];
+    }
+
+    const newInfo = await result.save();
+
+    return ServiceResponse(true, newInfo);
 }
 
 module.exports = electricistaService;

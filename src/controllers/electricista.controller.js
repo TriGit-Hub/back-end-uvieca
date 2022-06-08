@@ -30,6 +30,8 @@ electricistaController.save = async (req, res, next) => {
 electricistaController.findAll = async (req, res, next) => {
     try {
 
+        const {status, content} = await Services.electricistaService.findAll();
+
         return res.status(200).json(ApiResponse(status, "Resultados exitosos", content));
     } catch (e) {
         next(e);

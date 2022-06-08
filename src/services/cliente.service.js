@@ -1,10 +1,10 @@
 const ServiceResponse = require("../responses/ServiceResponse");
 const db = require('../database/dbconnection');
 
-const clientService = {}
+const clienteService = {}
 
 //TODO: Change error attributes as needed
-clientService.save = async (act_economica, email, id_instalacion, nit, constitucion_empresa, nrc, nombre, razon_social, telefono) => {
+clienteService.save = async (act_economica, email, id_instalacion, nit, constitucion_empresa, nrc, nombre, razon_social, telefono) => {
 
     const result = await db.sequelize.transaction(async (t) => {
 
@@ -44,7 +44,7 @@ clientService.save = async (act_economica, email, id_instalacion, nit, constituc
 
 }
 
-clientService.findAll = async () => {
+clienteService.findAll = async () => {
 
     const result = await db.Cliente.findAll();
 
@@ -52,8 +52,8 @@ clientService.findAll = async () => {
 
 }
 
-clientService.update = async () => {
+clienteService.update = async () => {
     //const result = await  db.Cliente.update();
 }
 
-module.exports = clientService;
+module.exports = clienteService;

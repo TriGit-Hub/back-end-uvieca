@@ -42,6 +42,7 @@ db.Cliente.belongsTo(db.Copia_ncr);
 db.Cliente.belongsTo(db.Copia_nit);
 
 db.Instalacion.hasMany(db.Inspeccion);
+db.Inspeccion.belongsTo(db.Instalacion);
 
 db.Copia_dui.hasOne(db.Electricista);
 db.Copia_carnet.hasOne(db.Electricista);

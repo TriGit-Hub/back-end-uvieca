@@ -6,6 +6,10 @@ const instalacion = (sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
+            conexion_subestacion: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             capacidad_generador: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -16,14 +20,6 @@ const instalacion = (sequelize) => {
             },
             clasificacion_instalacion: {
                 type: DataTypes.STRING,
-                allowNull: false,
-            },
-            conexion_subestacion: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            capacidad_subestacion: {
-                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             nombre_pro: {

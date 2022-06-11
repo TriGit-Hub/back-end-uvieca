@@ -33,8 +33,6 @@ clienteService.save = async (act_economica, email, id_instalacion, nit, constitu
             copiaConstitucionEmpId: newconstitucionEmpCopy.dataValues.id,
             copiaNcrId: newNrcCopy.dataValues.id,
             copiaNitId: newNitCopy.dataValues.id,
-            createdAt: Date(),
-            updatedAt: Date(),
         }, {transaction: t});
 
 

@@ -5,6 +5,7 @@ var userRouter = require("./users.route");
 var authRouter = require("./auth.router");
 var clienteRouter = require("./cliente.router");
 var electricistaController = require("./electricista.router");
+var instalacionController = require("./instalacion.router");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,5 +17,6 @@ router.use("/user", userRouter);
 router.use("/auth", authRouter);
 router.use("/cliente", clienteRouter);
 router.use("/electricista", electricistaController);
+router.use("/instalacion", instalacionController);
 
 module.exports = router;

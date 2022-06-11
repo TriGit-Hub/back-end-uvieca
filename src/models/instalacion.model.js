@@ -51,7 +51,7 @@ const instalacion = (sequelize) => {
                 allowNull: false,
             },
             tipo_servicio: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 allowNull: false,
             },
         },

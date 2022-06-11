@@ -59,16 +59,6 @@ instalacionController.findAll = async (req, res, next) => {
     }
 }
 
-instalacionController.findByNit = async (req, res, next) => {
-
-    try {
-
-    } catch (e) {
-        next(e)
-    }
-
-}
-
 instalacionController.update = async (req, res, next) => {
     try {
         const {status, content} = await Services.instalacionService.update(req.body);

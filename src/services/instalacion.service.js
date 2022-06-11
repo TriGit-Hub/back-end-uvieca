@@ -39,11 +39,6 @@ instalacionService.findAll = async () => {
     return ServiceResponse(true, result);
 }
 
-instalacionService.findBySolisitud = async (solicitud) => {
-
-
-}
-
 instalacionService.update = async (instalacion) => {
 
     const result = await db.Instalacion.findByPk(instalacion.id);

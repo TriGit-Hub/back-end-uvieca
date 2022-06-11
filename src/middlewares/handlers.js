@@ -8,6 +8,8 @@ const handlers = {};
 handlers.errorHandler = (error, req, res, next) => {
     debug(error);
 
+    console.log("error", error);
+
     if (!error.statusCode) {
         return res.status(500).json(ApiResponse(false, `Unhandled error: ${error.name ? error.name : null}`, error.errors));
     }

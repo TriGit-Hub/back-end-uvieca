@@ -6,10 +6,11 @@ var authRouter = require("./auth.router");
 var clienteRouter = require("./cliente.router");
 var electricistaController = require("./electricista.router");
 var instalacionController = require("./instalacion.router");
+var inspeccionController = require("./inspeccion.router");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+    res.render('index', {title: 'Express'});
 });
 
 //TODO: Add routers as needed.
@@ -18,5 +19,6 @@ router.use("/auth", authRouter);
 router.use("/cliente", clienteRouter);
 router.use("/electricista", electricistaController);
 router.use("/instalacion", instalacionController);
+router.use("/inspeccion", inspeccionController);
 
 module.exports = router;

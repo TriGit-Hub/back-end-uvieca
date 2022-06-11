@@ -5,6 +5,10 @@ const solicitud = (sequelize) => {
             id: {
                 type: DataTypes.UUID,
                 primaryKey: true
+            },
+            solicitudAtendida: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false
             }
         },
         {

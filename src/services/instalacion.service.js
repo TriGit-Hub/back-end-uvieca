@@ -30,7 +30,7 @@ instalacionService.save = async (capacidad_subestacion, conexion_subestacion, ca
 
 instalacionService.findAll = async () => {
 
-    const result = await db.Instalacion.findAll(); //TODO: Poner los include luego de hacer inspeccion.
+    const result = await db.Instalacion.findAll({include: db.Inspeccion}); //TODO: Poner los include luego de hacer inspeccion.
 
     if (result.length < 1) {
         return ServiceResponse(false, null);
@@ -39,12 +39,7 @@ instalacionService.findAll = async () => {
     return ServiceResponse(true, result);
 }
 
-instalacionService.findByCliente = async (cliente) => {
-
-
-}
-
-instalacionService.findByColisitud = async (solicitud) => {
+instalacionService.findBySolisitud = async (solicitud) => {
 
 
 }

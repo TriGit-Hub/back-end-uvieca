@@ -71,7 +71,9 @@ instalacionController.findByNit = async (req, res, next) => {
 
 instalacionController.update = async (req, res, next) => {
     try {
+        const {status, content} = await Services.instalacionService.update(req.body);
 
+        return res.status(200).json(ApiResponse(status, "Actualizado con exito", content));
     } catch (e) {
         next(e);
     }

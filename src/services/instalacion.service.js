@@ -51,6 +51,21 @@ instalacionService.findByColisitud = async (solicitud) => {
 
 instalacionService.update = async (instalacion) => {
 
+    const result = await db.Instalacion.findByPk(instalacion.id);
+
+    if (result === null) {
+        return ServiceResponse(false, result);
+    }
+
+    const keysInstalacion = Object.keys(instalacion);
+
+    for (let i = 0; i < keysInstalacion.length; i++) {
+        result[`${keysInstalacion[i]}`] = instalacion[`${keysInstalacion[i]}`];
+    }
+
+    const newInfo = await result.save();
+
+    return ServiceResponse(true, newInfo);
 
 }
 

@@ -13,6 +13,7 @@ router.post("/crear", instalacionController.save);
 router.get("/todos", instalacionController.findAll);
 
 //UPDATE
+router.put("/actualizar", instalacionController.update);
 
 //DELETE
 

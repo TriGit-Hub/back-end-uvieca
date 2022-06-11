@@ -10,6 +10,8 @@ router.post("/crear", instalacionController.save);
 
 //READ
 
+router.get("/todos", instalacionController.findAll);
+
 //UPDATE
 
 //DELETE

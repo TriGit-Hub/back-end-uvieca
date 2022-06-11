@@ -47,6 +47,13 @@ instalacionController.save = async (req, res, next) => {
 instalacionController.findAll = async (req, res, next) => {
     try {
 
+        const {status, content} = await Services.instalacionService.findAll();
+
+        if (!status) {
+            return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", content));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Resultado exitoso", content));
     } catch (e) {
         next(e);
     }

@@ -5,7 +5,6 @@ const instalacionService = {}
 
 //TODO: Change error attributes as needed
 
-
 instalacionService.save = async (capacidad_subestacion, conexion_subestacion, capacidad_generador, carga_a_solicitar, clasificacion_instalacion,
                                  nombre_pro, nro_hojas, nro_niveles, nro_servicio_a_instalar, nro_transformadores, nro_tablero, tension_suministro, tipo_servicio) => {
 
@@ -31,6 +30,13 @@ instalacionService.save = async (capacidad_subestacion, conexion_subestacion, ca
 
 instalacionService.findAll = async () => {
 
+    const result = await db.Instalacion.findAll(); //TODO: Poner los include luego de hacer inspeccion.
+
+    if (result.length < 1) {
+        return ServiceResponse(false, null);
+    }
+
+    return ServiceResponse(true, result);
 }
 
 instalacionService.findByCliente = async (cliente) => {

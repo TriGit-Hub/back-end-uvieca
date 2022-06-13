@@ -11,16 +11,9 @@ instalacionService.save = async (clienteId) => {
 
 instalacionService.findAll = async () => {
 
-    const result = await db.Instalacion.findAll({include: db.Inspeccion});
-
-    if (result.length < 1) {
-        return ServiceResponse(false, null);
-    }
-
-    return ServiceResponse(true, result);
 }
 
-instalacionService.update = async (instalacion) => {
+instalacionService.changeStatus = async (id) => {
 
 }
 

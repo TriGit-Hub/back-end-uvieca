@@ -16,16 +16,16 @@ inspeccionController.save = async (req, res, next) => {
     }
 };
 
-inspeccionController.findAll = async (req, res, next) => {
-    try {
-
-    } catch (e) {
-        next(e);
-    }
-}
-
 inspeccionController.update = async (req, res, next) => {
     try {
+
+        const {status, content} = await Services.inspeccionService.update(req.body);
+
+        if(!status){
+            return res.status(300).json(ApiResponse(status, "No existe el registro"));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Actualizado con exito"));
 
     } catch (e) {
         next(e);

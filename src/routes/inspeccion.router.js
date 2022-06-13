@@ -12,6 +12,8 @@ router.post("/crear", inspeccionController.save);
 
 //UPDATE
 
+router.put("/actualizar", inspeccionController.update);
+
 //DELETE
 
 module.exports = router;

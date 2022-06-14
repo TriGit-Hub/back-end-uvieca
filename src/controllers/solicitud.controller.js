@@ -30,6 +30,24 @@ solicitudController.findAll = async (req, res, next) => {
     }
 }
 
+solicitudController.findByCliente = async (req, res, next) => {
+    try {
+
+        const {id} = req.params;
+
+        const {status, content} = await Services.solicitudService.findByCliente(id);
+
+        if (!status) {
+            return res.status(300).json(ApiResponse(status, "No hay solicitudes"));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Datos encontrados", content));
+
+    } catch (e) {
+        next(e);
+    }
+}
+
 solicitudController.update = async (req, res, next) => {
     try {
 

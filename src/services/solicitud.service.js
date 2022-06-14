@@ -27,11 +27,19 @@ solicitudService.findAll = async () => {
     return ServiceResponse(true, result);
 }
 
-solicitudService.findByCliente = async () => {
+solicitudService.findByCliente = async (clienteId) => {
 
-}
+    const result = await db.Solicitud.findAll(
+        {
+            where: {clienteId: clienteId},
+            order: [['createdAt', 'DESC']]
+        });
 
-solicitudService.agregarInstalacion = async (instalacionId, solicitudId, t) => {
+    if (result === null) {
+        return ServiceResponse(false, null);
+    }
+
+    return ServiceResponse(true, result);
 
 }
 

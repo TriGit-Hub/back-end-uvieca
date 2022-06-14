@@ -10,6 +10,7 @@ router.post("/crear", solicitudController.save);
 
 //READ
 router.get("/todos", solicitudController.findAll);
+router.get("/porCliente/:id", solicitudController.findByCliente);
 
 //UPDATE
 

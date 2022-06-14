@@ -43,8 +43,18 @@ solicitudService.findByCliente = async (clienteId) => {
 
 }
 
-solicitudService.changeStatus = async (id) => {
+solicitudService.changeStatus = async (id, nuevoEstado) => {
+    const solicitud = await db.Solicitud.findByPk(id);
 
+    if (solicitud === null) {
+        return ServiceResponse(false, null);
+    }
+
+    solicitud.estado = nuevoEstado;
+
+    await solicitud.save();
+
+    return ServiceResponse(true, null);
 }
 
 module.exports = solicitudService;

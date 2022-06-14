@@ -48,8 +48,17 @@ solicitudController.findByCliente = async (req, res, next) => {
     }
 }
 
-solicitudController.update = async (req, res, next) => {
+solicitudController.changeStatus = async (req, res, next) => {
     try {
+        const {id, nuevoEstado} = req.body;
+
+        const {status, content} = await Services.solicitudService.changeStatus(id, nuevoEstado);
+
+        if (!status) {
+            return res.status(300).json(ApiResponse(status, "No existe esa solicitud"));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Estado cambiado con exito"));
 
     } catch (e) {
         next(e);

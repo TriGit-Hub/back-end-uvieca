@@ -13,6 +13,7 @@ router.get("/todos", solicitudController.findAll);
 router.get("/porCliente/:id", solicitudController.findByCliente);
 
 //UPDATE
+router.put("/cambiarEstado", solicitudController.changeStatus);
 
 //DELETE
 

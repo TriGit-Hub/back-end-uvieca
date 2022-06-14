@@ -7,10 +7,10 @@ const solicitud = (sequelize) => {
                 defaultValue: DataTypes.UUIDV4,
                 primaryKey: true
             },
-            solicitudAtendida: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false
-            }
+            estado: {
+                type: DataTypes.INTEGER,
+                defaultValue: 0
+            },
         },
         {
             freezeTableName: true

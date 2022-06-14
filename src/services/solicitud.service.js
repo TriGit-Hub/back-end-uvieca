@@ -37,7 +37,10 @@ solicitudService.findByCliente = async (clienteId) => {
         {
             where: {clienteId: clienteId},
             order: [['createdAt', 'DESC']],
-            include: [{model: db.Cliente, attributes: ['nombre']}]
+            include: [
+                {model: db.Cliente, attributes: ['nombre']},
+                {model: db.Electricista, attributes: ['nombre']}
+            ]
         });
 
     if (result === null) {
@@ -60,6 +63,25 @@ solicitudService.changeStatus = async (id, nuevoEstado) => {
     await solicitud.save();
 
     return ServiceResponse(true, null);
+}
+
+solicitudService.addElectricist = async (id, electricistaId) => {
+    const electricista = await db.Electricista.findByPk(electricistaId);
+
+    if (electricista === null) {
+        return ServiceResponse(false, "No existe el electricista");
+    }
+
+    const solicitud = await db.Solicitud.findByPk(id);
+
+    if (solicitud === null) {
+        return ServiceResponse(false, "No existe la solicitud");
+    }
+
+    await solicitud.addElectricista(electricista);
+
+    return ServiceResponse(true, null);
+
 }
 
 module.exports = solicitudService;

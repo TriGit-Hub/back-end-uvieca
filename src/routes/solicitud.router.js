@@ -14,6 +14,7 @@ router.get("/porCliente/:id", solicitudController.findByCliente);
 
 //UPDATE
 router.put("/cambiarEstado", solicitudController.changeStatus);
+router.put("/asignarElectricista", solicitudController.addElectricist);
 
 //DELETE
 

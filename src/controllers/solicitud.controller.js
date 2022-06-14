@@ -65,4 +65,20 @@ solicitudController.changeStatus = async (req, res, next) => {
     }
 }
 
+solicitudController.addElectricist = async (req, res, next) => {
+    try {
+        const {id, electricistaId} = req.body;
+
+        const {status, content} = await Services.solicitudService.addElectricist(id, electricistaId);
+
+        if (!status) {
+            return res.status(300).json(ApiResponse(status, content));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Electricista asignado con exito"));
+    } catch (e) {
+        next(e);
+    }
+}
+
 module.exports = solicitudController;

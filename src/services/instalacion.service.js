@@ -28,11 +28,11 @@ instalacionService.save = async (solicitudId, capacidad_subestacion, conexion_su
 
         const solicitud = await db.Solicitud.findByPk(solicitudId);
 
-        if(solicitud === null){
+        if (solicitud === null) {
             throw Error("No existe la solicitud")
         }
 
-        if(solicitud.instalacionId !== null){
+        if (solicitud.instalacionId !== null) {
             throw Error("La solicitud ya tiene una instalacion")
         }
 

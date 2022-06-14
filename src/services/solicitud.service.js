@@ -17,7 +17,11 @@ solicitudService.save = async (clienteId) => {
 solicitudService.findAll = async () => {
     const result = await db.Solicitud.findAll(
         {
-            order: [['createdAt', 'DESC']]
+            order: [['createdAt', 'DESC']],
+            include: [
+                {model: db.Cliente, attributes: ['nombre']},
+                {model: db.Electricista, attributes: ['nombre']}
+            ]
         });
 
     if (result === null) {
@@ -32,7 +36,8 @@ solicitudService.findByCliente = async (clienteId) => {
     const result = await db.Solicitud.findAll(
         {
             where: {clienteId: clienteId},
-            order: [['createdAt', 'DESC']]
+            order: [['createdAt', 'DESC']],
+            include: [{model: db.Cliente, attributes: ['nombre']}]
         });
 
     if (result === null) {

@@ -4,9 +4,11 @@ var router = express.Router();
 var userRouter = require("./users.route");
 var authRouter = require("./auth.router");
 var clienteRouter = require("./cliente.router");
-var electricistaController = require("./electricista.router");
-var instalacionController = require("./instalacion.router");
-var inspeccionController = require("./inspeccion.router");
+var electricistaRouter = require("./electricista.router");
+var instalacionRouter = require("./instalacion.router");
+var inspeccionRouter = require("./inspeccion.router");
+var solicitudRouter = require("./solicitud.router");
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -17,8 +19,9 @@ router.get('/', function (req, res, next) {
 router.use("/user", userRouter);
 router.use("/auth", authRouter);
 router.use("/cliente", clienteRouter);
-router.use("/electricista", electricistaController);
-router.use("/instalacion", instalacionController);
-router.use("/inspeccion", inspeccionController);
+router.use("/electricista", electricistaRouter);
+router.use("/instalacion", instalacionRouter);
+router.use("/inspeccion", inspeccionRouter);
+router.use("/solicitud", solicitudRouter);
 
 module.exports = router;

@@ -6,10 +6,23 @@ const instalacionService = {}
 //TODO: Change error attributes as needed
 
 instalacionService.save = async (clienteId) => {
+    const newSolicitud = await db.Solicitud.create({
+        clienteId
+    });
+
+    return ServiceResponse(true, null);
+}
+
+
+instalacionService.findAll = async () => {
 
 }
 
-instalacionService.findAll = async () => {
+instalacionService.findByCliente = async () => {
+
+}
+
+instalacionService.agregarInstalacion = async () => {
 
 }
 

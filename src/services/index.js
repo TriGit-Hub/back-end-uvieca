@@ -7,5 +7,6 @@ Services.clienteService = require("./cliente.service");
 Services.electricistaService = require("./electricista.service");
 Services.instalacionService = require("./instalacion.service");
 Services.inspeccionService = require("./inspeccion.service");
+Services.solicitudService = require("./solicitud.service");
 
 module.exports = Services;

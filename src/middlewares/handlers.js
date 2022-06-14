@@ -8,10 +8,10 @@ const handlers = {};
 handlers.errorHandler = (error, req, res, next) => {
     debug(error);
 
-    console.log("error", error);
+    console.log("error", error.message);
 
     if (!error.statusCode) {
-        return res.status(500).json(ApiResponse(false, `Unhandled error: ${error.name ? error.name : null}`, error.errors));
+        return res.status(500).json(ApiResponse(false, `Unhandled error: ${error.message ? error.message : null}`, error.errors));
     }
 
     if (error.name === "SequelizeUniqueConstraintError") {

@@ -1,11 +1,11 @@
 const ServiceResponse = require("../responses/ServiceResponse");
 const db = require('../database/dbconnection');
 
-const instalacionService = {}
+const solicitudService = {}
 
 //TODO: Change error attributes as needed
 
-instalacionService.save = async (clienteId) => {
+solicitudService.save = async (clienteId) => {
     const newSolicitud = await db.Solicitud.create({
         clienteId
     });
@@ -14,20 +14,20 @@ instalacionService.save = async (clienteId) => {
 }
 
 
-instalacionService.findAll = async () => {
+solicitudService.findAll = async () => {
 
 }
 
-instalacionService.findByCliente = async () => {
+solicitudService.findByCliente = async () => {
 
 }
 
-instalacionService.agregarInstalacion = async () => {
+solicitudService.agregarInstalacion = async (instalacionId, solicitudId, t) => {
 
 }
 
-instalacionService.changeStatus = async (id) => {
+solicitudService.changeStatus = async (id) => {
 
 }
 
-module.exports = instalacionService;
+module.exports = solicitudService;

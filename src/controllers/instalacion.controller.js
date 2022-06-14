@@ -7,6 +7,7 @@ instalacionController.save = async (req, res, next) => {
     try {
 
         const {
+            solicitudId,
             capacidad_subestacion,
             conexion_subestacion,
             capacidad_generador,
@@ -23,6 +24,7 @@ instalacionController.save = async (req, res, next) => {
         } = req.body;
 
         const {status, content} = await Services.instalacionService.save(
+            solicitudId,
             capacidad_subestacion,
             conexion_subestacion,
             capacidad_generador,

@@ -20,9 +20,9 @@ solicitudService.findAll = async () => {
             order: [['createdAt', 'DESC']]
         });
 
-    /*if (result === null) {
+    if (result === null) {
         return ServiceResponse(false, null);
-    }*/
+    }
 
     return ServiceResponse(true, result);
 }

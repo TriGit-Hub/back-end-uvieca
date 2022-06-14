@@ -9,6 +9,7 @@ var solicitudController = require("../controllers/solicitud.controller");
 router.post("/crear", solicitudController.save);
 
 //READ
+router.get("/todos", solicitudController.findAll);
 
 //UPDATE
 

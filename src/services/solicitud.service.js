@@ -15,7 +15,16 @@ solicitudService.save = async (clienteId) => {
 
 
 solicitudService.findAll = async () => {
+    const result = await db.Solicitud.findAll(
+        {
+            order: [['createdAt', 'DESC']]
+        });
 
+    /*if (result === null) {
+        return ServiceResponse(false, null);
+    }*/
+
+    return ServiceResponse(true, result);
 }
 
 solicitudService.findByCliente = async () => {

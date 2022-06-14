@@ -1,9 +1,9 @@
 const ApiResponse = require("../responses/ApiResponse");
 const Services = require('../services/index')
 
-const inspeccionController = {};
+const solicitudController = {};
 
-inspeccionController.save = async (req, res, next) => {
+solicitudController.save = async (req, res, next) => {
     try {
         const {clienteId} = req.body;
 
@@ -11,12 +11,26 @@ inspeccionController.save = async (req, res, next) => {
 
         return res.status(200).json(ApiResponse(status, "Datos insertados con exito"));
     } catch (e) {
-        console.log(e);
         next(e);
     }
 };
 
-inspeccionController.update = async (req, res, next) => {
+solicitudController.findAll = async (req, res, next) => {
+    try {
+        const {status, content} = await Services.solicitudService.findAll();
+
+        if (!status) {
+            return res.status(300).json(ApiResponse(status, "No hay solicitudes"));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Datos encontrados", content));
+
+    } catch (e) {
+        next(e);
+    }
+}
+
+solicitudController.update = async (req, res, next) => {
     try {
 
     } catch (e) {
@@ -24,4 +38,4 @@ inspeccionController.update = async (req, res, next) => {
     }
 }
 
-module.exports = inspeccionController;
+module.exports = solicitudController;

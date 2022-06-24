@@ -6,7 +6,9 @@ const dbname = process.env.DBNAME;
 
 const uri = process.env.DBURI || `mongodb://${dbhost}:${dbport}/${dbname}`
 
-const sequelize = new Sequelize(uri);
+const sequelize = new Sequelize(uri, {
+    logging: false
+});
 
 sequelize.authenticate(uri)
     .then(() => {

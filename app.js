@@ -14,13 +14,13 @@ var handlers = require("./src/middlewares/handlers");
 
 var app = express();
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+const accessLogStream = fs.createWriteStream(`${process.env.LOG_PATH ? process.env.LOG_PATH : __dirname}access.log`, {flags: 'a'})
 
-if(process.env.DEVLOG){
+if (process.env.DEVLOG) {
     app.use(morganLogger('dev'));
 }
 
-if(!process.env.DEVLOG){
+if (process.env.DEVLOG) {
     app.use(morganLogger('combined', {stream: accessLogStream}));
 }
 app.use(express.json());

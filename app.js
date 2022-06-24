@@ -16,11 +16,11 @@ var app = express();
 
 const accessLogStream = fs.createWriteStream(`${process.env.LOG_PATH ? process.env.LOG_PATH : __dirname}access.log`, {flags: 'a'})
 
-if (process.env.DEVLOG) {
+if (process.env.DEV) {
     app.use(morganLogger('dev'));
 }
 
-if (!process.env.DEVLOG) {
+if (!process.env.DEV) {
     app.use(morganLogger('combined', {stream: accessLogStream}));
 }
 app.use(express.json());

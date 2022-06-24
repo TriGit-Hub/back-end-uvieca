@@ -20,7 +20,7 @@ if (process.env.DEVLOG) {
     app.use(morganLogger('dev'));
 }
 
-if (process.env.DEVLOG) {
+if (!process.env.DEVLOG) {
     app.use(morganLogger('combined', {stream: accessLogStream}));
 }
 app.use(express.json());

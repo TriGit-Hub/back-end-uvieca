@@ -5,9 +5,10 @@ const dbport = process.env.DBPORT || "27017";
 const dbname = process.env.DBNAME;
 
 const uri = process.env.DBURI || `mongodb://${dbhost}:${dbport}/${dbname}`
+const SYNCDB = process.env.SYNCDB ? true : false;
 
 const sequelize = new Sequelize(uri, {
-    logging: false
+    logging: SYNCDB
 });
 
 sequelize.authenticate(uri)
@@ -63,9 +64,9 @@ db.Electricista.belongsToMany(db.Solicitud, {through: 'solicitudxelectricista'})
 
 db.sync = async () => {
 
-    let alter = process.env.DEV ? true : false;
+    //let alter = process.env.SYNCDB ? true : false;
 
-    if (alter) {
+    if (SYNCDB) {
         await sequelize.sync({alter: true});
 
         console.log('Tables Sync!')

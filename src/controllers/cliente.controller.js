@@ -8,7 +8,6 @@ clienteController.save = async (req, res, next) => {
         const {
             act_economica,
             email,
-            id_instalacion,
             nit,
             constitucion_empresa,
             nrc,
@@ -20,7 +19,7 @@ clienteController.save = async (req, res, next) => {
         const {
             status,
             content
-        } = await Services.clienteService.save(act_economica, email, id_instalacion, nit, constitucion_empresa, nrc, nombre, razon_social, telefono);
+        } = await Services.clienteService.save(act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono);
 
         return res.status(200).json(ApiResponse(status, "Datos insertados con exito"));
     } catch (e) {

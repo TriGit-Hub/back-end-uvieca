@@ -17,11 +17,6 @@ const clientes = (sequelize) => {
                 unique: true,
                 allowNull: false,
             },
-            id_instalacion: {
-                type: DataTypes.STRING,
-                unique: true,
-                allowNull: false,
-            },
             nit: {
                 type: DataTypes.STRING,
                 unique: true,

@@ -4,7 +4,7 @@ const db = require('../database/dbconnection');
 const clienteService = {}
 
 //TODO: Change error attributes as needed
-clienteService.save = async (act_economica, email, id_instalacion, nit, constitucion_empresa, nrc, nombre, razon_social, telefono) => {
+clienteService.save = async (act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono) => {
 
     const result = await db.sequelize.transaction(async (t) => {
 
@@ -23,7 +23,6 @@ clienteService.save = async (act_economica, email, id_instalacion, nit, constitu
         const newClient = await db.Cliente.create({
             act_economica,
             email,
-            id_instalacion,
             nit,
             constitucion_empresa,
             nrc,

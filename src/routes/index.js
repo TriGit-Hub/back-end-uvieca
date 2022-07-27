@@ -8,6 +8,7 @@ var electricistaRouter = require("./electricista.router");
 var instalacionRouter = require("./instalacion.router");
 var inspeccionRouter = require("./inspeccion.router");
 var solicitudRouter = require("./solicitud.router");
+var fileRouter = require("./file.router");
 
 
 /* GET home page. */
@@ -23,5 +24,6 @@ router.use("/electricista", electricistaRouter);
 router.use("/instalacion", instalacionRouter);
 router.use("/inspeccion", inspeccionRouter);
 router.use("/solicitud", solicitudRouter);
+router.use("/archivo", fileRouter);
 
 module.exports = router;

@@ -16,12 +16,10 @@ clienteController.save = async (req, res, next) => {
             telefono
         } = req.body;
 
-        console.log(req.files);
-
         const {
             status,
             content
-        } = await Services.clienteService.save(act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono);
+        } = await Services.clienteService.save(act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono, req.files);
 
         return res.status(200).json(ApiResponse(status, "Datos insertados con exito"));
     } catch (e) {

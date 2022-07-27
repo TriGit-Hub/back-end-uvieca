@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
         cb(null, 'public/uploads/img')
     },
     filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        const uniqueSuffix = Date.now() + '-' + (Math.round(Math.random() * 1E9) + "-" +file.originalname)
         cb(null, file.fieldname + '-' + uniqueSuffix)
     }
 })

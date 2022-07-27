@@ -4,20 +4,20 @@ const db = require('../database/dbconnection');
 const clienteService = {}
 
 //TODO: Change error attributes as needed
-clienteService.save = async (act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono) => {
+clienteService.save = async (act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono, files) => {
 
     const result = await db.sequelize.transaction(async (t) => {
 
         const newNitCopy = await db.Copia_nit.create({
-            img: 'prueba imagen nit cliente'
+            img: files[0].filename
         }, {transaction: t});
 
         const newconstitucionEmpCopy = await db.Contitucion_emp.create({
-            img: 'prueba imagen constitucionEmp cliente'
+            img: files[1].filename
         }, {transaction: t});
 
         const newNrcCopy = await db.Copia_ncr.create({
-            img: 'prueba imagen nrc cliente'
+            img: files[2].filename
         }, {transaction: t});
 
         const newClient = await db.Cliente.create({

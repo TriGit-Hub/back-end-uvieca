@@ -5,9 +5,30 @@ const solicitudService = {}
 
 //TODO: Change error attributes as needed
 
-solicitudService.save = async (clienteId) => {
-    const newSolicitud = await db.Solicitud.create({
-        clienteId
+solicitudService.save = async (clienteId, facturacion) => {
+
+    const result = await db.sequelize.transaction(async (t) => {
+
+        /*const cliente = await db.Cliente.findByPk(clienteId);
+
+        if (!cliente) {
+            return ServiceResponse(false, "No existe el cliente");
+        }*/
+
+        const newNrcCopy = await db.Copia_ncr.create({
+            img: 'prueba imagen nrc solicitud'
+        }, {transaction: t});
+
+        const newFacturacion = await db.Info_facturacion.create({
+            ...facturacion,
+            copiaNcrId: newNrcCopy.dataValues.id
+        }, {transaction: t});
+
+        const newSolicitud = await db.Solicitud.create({
+            clienteId,
+            infoFacturacionId: newFacturacion.dataValues.id
+        }, {transaction: t});
+
     });
 
     return ServiceResponse(true, null);
@@ -20,7 +41,8 @@ solicitudService.findAll = async () => {
             order: [['createdAt', 'DESC']],
             include: [
                 {model: db.Cliente, attributes: ['nombre']},
-                {model: db.Electricista, attributes: ['nombre']}
+                {model: db.Electricista, attributes: ['nombre']},
+                {model: db.Info_facturacion}
             ]
         });
 

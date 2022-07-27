@@ -30,6 +30,7 @@ db.Copia_dui = require('../models/copia_dui.model')(sequelize)
 db.Copia_ncr = require('../models/copia_ncr.model')(sequelize);
 db.Copia_nit = require('../models/copias_nit.model')(sequelize);
 db.Electricista = require('../models/electricista.model')(sequelize);
+db.Info_facturacion = require('../models/infoFacturacion.model')(sequelize);
 db.Inspeccion = require('../models/inspeccion.model')(sequelize);
 db.Instalacion = require('../models/instalacion.model')(sequelize);
 db.Solicitud = require('../models/solicitud.model')(sequelize);
@@ -38,6 +39,7 @@ db.Solicitud = require('../models/solicitud.model')(sequelize);
 
 db.Contitucion_emp.hasOne(db.Cliente);
 db.Copia_ncr.hasOne(db.Cliente);
+db.Copia_ncr.hasOne(db.Info_facturacion);
 db.Copia_nit.hasOne(db.Cliente);
 
 db.Cliente.belongsTo(db.Contitucion_emp);
@@ -58,6 +60,11 @@ db.Instalacion.hasOne(db.Solicitud);
 
 db.Solicitud.belongsTo(db.Cliente);
 db.Solicitud.belongsTo(db.Instalacion);
+db.Solicitud.belongsTo(db.Info_facturacion);
+
+db.Info_facturacion.hasOne(db.Solicitud);
+
+db.Info_facturacion.belongsTo(db.Copia_ncr);
 
 db.Solicitud.belongsToMany(db.Electricista, {through: 'solicitudxelectricista'});
 db.Electricista.belongsToMany(db.Solicitud, {through: 'solicitudxelectricista'});

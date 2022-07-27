@@ -9,15 +9,15 @@ clienteService.save = async (act_economica, email, nit, constitucion_empresa, nr
     const result = await db.sequelize.transaction(async (t) => {
 
         const newNitCopy = await db.Copia_nit.create({
-            img: 'prueba imagen nit'
+            img: 'prueba imagen nit cliente'
         }, {transaction: t});
 
         const newconstitucionEmpCopy = await db.Contitucion_emp.create({
-            img: 'prueba imagen constitucionEmp'
+            img: 'prueba imagen constitucionEmp cliente'
         }, {transaction: t});
 
         const newNrcCopy = await db.Copia_ncr.create({
-            img: 'prueba imagen nrc'
+            img: 'prueba imagen nrc cliente'
         }, {transaction: t});
 
         const newClient = await db.Cliente.create({

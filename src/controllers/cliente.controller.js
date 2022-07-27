@@ -16,6 +16,8 @@ clienteController.save = async (req, res, next) => {
             telefono
         } = req.body;
 
+        console.log(req.files);
+
         const {
             status,
             content

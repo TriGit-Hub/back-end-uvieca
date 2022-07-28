@@ -5,23 +5,28 @@ const solicitudService = {}
 
 //TODO: Change error attributes as needed
 
-solicitudService.save = async (clienteId, facturacion) => {
+solicitudService.save = async (clienteId, facturacion, img) => {
 
     const result = await db.sequelize.transaction(async (t) => {
 
-        /*const cliente = await db.Cliente.findByPk(clienteId);
+        let newNrcCopy;
 
-        if (!cliente) {
-            return ServiceResponse(false, "No existe el cliente");
-        }*/
+        const cliente = await db.Cliente.findByPk(clienteId);
 
-        const newNrcCopy = await db.Copia_ncr.create({
-            img: 'prueba imagen nrc solicitud'
-        }, {transaction: t});
+        if (cliente == null) {
+            return ServiceResponse(false, "El cliente no existe");
+        }
+
+        if (img) {
+            newNrcCopy = await db.Copia_ncr.create({
+                img: img.filename
+            }, {transaction: t});
+
+        }
 
         const newFacturacion = await db.Info_facturacion.create({
             ...facturacion,
-            copiaNcrId: newNrcCopy.dataValues.id
+            copiaNcrId: img ? newNrcCopy.dataValues.id : cliente.dataValues.copiaNcrId
         }, {transaction: t});
 
         const newSolicitud = await db.Solicitud.create({
@@ -29,9 +34,11 @@ solicitudService.save = async (clienteId, facturacion) => {
             infoFacturacionId: newFacturacion.dataValues.id
         }, {transaction: t});
 
+        return ServiceResponse(true, "Datos insertados con exito");
+
     });
 
-    return ServiceResponse(true, null);
+    return ServiceResponse(result.status, result.content);
 }
 
 

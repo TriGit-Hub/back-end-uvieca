@@ -5,11 +5,12 @@ const solicitudController = {};
 
 solicitudController.save = async (req, res, next) => {
     try {
+
         const {clienteId, infoFacturacion} = req.body;
 
-        const {status, content} = await Services.solicitudService.save(clienteId, infoFacturacion);
+        const {status, content} = await Services.solicitudService.save(clienteId, infoFacturacion,req.file);
 
-        return res.status(200).json(ApiResponse(status, "Datos insertados con exito"));
+        return res.status(200).json(ApiResponse(status, content));
     } catch (e) {
         next(e);
     }

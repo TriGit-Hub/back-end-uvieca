@@ -8,17 +8,21 @@ clienteService.save = async (act_economica, email, nit, constitucion_empresa, nr
 
     const result = await db.sequelize.transaction(async (t) => {
 
-        const newNitCopy = await db.Copia_nit.create({
-            img: files[0].filename
-        }, {transaction: t});
+        if (files.length > 0) {
+            var newNitCopy = await db.Copia_nit.create({
+                img: files[0].filename
+            }, {transaction: t});
 
-        const newconstitucionEmpCopy = await db.Contitucion_emp.create({
-            img: files[1].filename
-        }, {transaction: t});
+            var newconstitucionEmpCopy = await db.Contitucion_emp.create({
+                img: files[1].filename
+            }, {transaction: t});
 
-        const newNrcCopy = await db.Copia_ncr.create({
-            img: files[2].filename
-        }, {transaction: t});
+            var newNrcCopy = await db.Copia_ncr.create({
+                img: files[2].filename
+            }, {transaction: t});
+        }
+
+        console.log(newNitCopy);
 
         const newClient = await db.Cliente.create({
             act_economica,
@@ -29,9 +33,9 @@ clienteService.save = async (act_economica, email, nit, constitucion_empresa, nr
             nombre,
             razon_social,
             telefono,
-            copiaConstitucionEmpId: newconstitucionEmpCopy.dataValues.id,
-            copiaNcrId: newNrcCopy.dataValues.id,
-            copiaNitId: newNitCopy.dataValues.id,
+            copiaConstitucionEmpId: newconstitucionEmpCopy ? newconstitucionEmpCopy.dataValues.id : null,
+            copiaNcrId: newNrcCopy ? newNrcCopy.dataValues.id : null,
+            copiaNitId: newNitCopy ? newNitCopy.dataValues.id : null,
         }, {transaction: t});
 
 

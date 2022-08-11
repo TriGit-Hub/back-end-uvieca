@@ -1,4 +1,5 @@
 require('dotenv').config();
+var cors = require('cors')
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -14,6 +15,8 @@ var handlers = require("./src/middlewares/handlers");
 
 var app = express();
 
+app.use(cors());
+
 const accessLogStream = fs.createWriteStream(`${process.env.LOG_PATH ? process.env.LOG_PATH : __dirname}access.log`, {flags: 'a'})
 
 if (process.env.DEV) {
@@ -23,6 +26,7 @@ if (process.env.DEV) {
 if (!process.env.DEV) {
     app.use(morganLogger('combined', {stream: accessLogStream}));
 }
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());

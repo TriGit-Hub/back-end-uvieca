@@ -28,17 +28,12 @@ file.obtenerPdfSolicitud = async (req, res, next) => {
 
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-        //cambiar desde aqui
-
         const form = pdfDoc.getForm();
 
-        const field = form.getTextField("Given Name Text Box");
-        field.setText("Prueba pito");
-
-        const field2 = form.getTextField("Family Name Text Box");
-        field2.setText("Prueba pito 2");
-
-        //hasta aqui
+        Object.keys(req.body).forEach((element) => {
+            const field = form.getTextField(element)
+            field.setText(req.body[element])
+        })
 
         const pdfFinal = await pdfDoc.saveAsBase64();
 

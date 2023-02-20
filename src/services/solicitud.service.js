@@ -9,7 +9,7 @@ solicitudService.save = async (clienteId, facturacion, img) => {
 
     const result = await db.sequelize.transaction(async (t) => {
 
-        let newNrcCopy;
+        //let newNrcCopy;
 
         const cliente = await db.Cliente.findByPk(clienteId);
 
@@ -18,7 +18,7 @@ solicitudService.save = async (clienteId, facturacion, img) => {
         }
 
         if (img) {
-            newNrcCopy = await db.Copia_ncr.create({
+            var newNrcCopy = await db.Copia_ncr.create({
                 img: img.filename
             }, {transaction: t});
 

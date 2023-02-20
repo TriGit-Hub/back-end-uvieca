@@ -1,7 +1,7 @@
 const ApiResponse = require("../responses/ApiResponse");
 const DTO = require('../dto');
 const Services = require('../services/index');
-const { PDFDocument } = require('pdf-lib');
+const {PDFDocument} = require('pdf-lib');
 const fs = require('fs');
 
 var path = require('path');
@@ -34,6 +34,9 @@ file.obtenerPdfSolicitud = async (req, res, next) => {
 
         const field = form.getTextField("Given Name Text Box");
         field.setText("Prueba pito");
+
+        const field2 = form.getTextField("Family Name Text Box");
+        field2.setText("Prueba pito 2");
 
         //hasta aqui
 

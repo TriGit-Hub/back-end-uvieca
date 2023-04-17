@@ -23,7 +23,7 @@ file.getImg = async (req, res, next) => {
 file.obtenerPdfSolicitud = async (req, res, next) => {
     try {
 
-        const url = path.join(__dirname, `/../../public/OoPdfFormExample.pdf`);
+        const url = path.join(__dirname, `/../../public/solimod.pdf`);
         const existingPdfBytes = fs.readFileSync(url);
 
         const pdfDoc = await PDFDocument.load(existingPdfBytes);

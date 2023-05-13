@@ -40,7 +40,7 @@ file.obtenerPdfSolicitud = async (req, res, next) => {
         return res.status(200).json(ApiResponse(true, "PDF creado con exito", pdfFinal));
     } catch (e) {
         next(e);
-        return res.status(507).json(ApiResponse(true, "trono"));
+        return res.status(507).json(ApiResponse(true, "trono",e));
     }
 };
 

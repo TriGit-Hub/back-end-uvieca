@@ -12,7 +12,7 @@ file.getImg = async (req, res, next) => {
     try {
         const {imagen} = req.params;
 
-        return res.sendFile(path.join(__dirname, `/../../public/uploads/img/${imagen}`));
+        return res.sendFile(path.join(__dirname, `/../public/uploads/img/${imagen}`));
 
         return res.status(200).json(ApiResponse(status, "Datos insertados con exito"));
     } catch (e) {
@@ -23,7 +23,7 @@ file.getImg = async (req, res, next) => {
 file.obtenerPdfSolicitud = async (req, res, next) => {
     try {
 
-        const url = path.join(__dirname, `/../../public/solimod.pdf`);
+        const url = path.join(__dirname, `/../public/solimod.pdf`);
         const existingPdfBytes = fs.readFileSync(url);
 
         const pdfDoc = await PDFDocument.load(existingPdfBytes);

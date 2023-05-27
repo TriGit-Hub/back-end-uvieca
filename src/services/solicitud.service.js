@@ -34,7 +34,7 @@ solicitudService.save = async (clienteId, facturacion, img) => {
             infoFacturacionId: newFacturacion.dataValues.id
         }, {transaction: t});
 
-        return ServiceResponse(true, "Datos insertados con exito");
+        return ServiceResponse(true, newSolicitud.dataValues.id);
 
     });
 

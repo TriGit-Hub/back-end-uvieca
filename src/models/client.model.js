@@ -19,7 +19,7 @@ const clientes = (sequelize) => {
             },
             nit: {
                 type: DataTypes.STRING,
-              //  unique: true,
+                unique: true,
                 allowNull: false,
             },
             constitucion_empresa: {

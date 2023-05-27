@@ -38,7 +38,7 @@ clienteService.save = async (act_economica, email, nit, constitucion_empresa, nr
             copiaNitId: newNitCopy ? newNitCopy.dataValues.id : null,
         }, {transaction: t});
 
-
+        return ServiceResponse(true, newClient.dataValues.id);
     });
 
     return ServiceResponse(true, null);

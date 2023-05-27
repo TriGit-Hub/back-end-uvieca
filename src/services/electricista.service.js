@@ -27,7 +27,7 @@ electricistaService.save = async (carnet, dui, email, nit, nombre, registro, tel
             copiaDuiId: newNitCopy.dataValues.id,
             copiaCarnetId: newCarnetCopy.dataValues.id,
         }, {transaction: t});
-
+        return ServiceResponse(true, newElectricista.dataValues.id);
     });
 
     return ServiceResponse(true, null);

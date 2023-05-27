@@ -5,7 +5,7 @@ const clienteService = {}
 
 //TODO: Change error attributes as needed
 clienteService.save = async (act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono, files) => {
-var clientid = ""; 
+
     const result = await db.sequelize.transaction(async (t) => {
 
         if (files.length > 0) {
@@ -38,10 +38,10 @@ var clientid = "";
             copiaNitId: newNitCopy ? newNitCopy.dataValues.id : null,
         }, {transaction: t});
 
-       clientid=newClient.dataValues.id;
+        return ServiceResponse(true, newClient.dataValues.id);
     });
 
-    return ServiceResponse(true, clientid);
+    return ServiceResponse(result.status, result.content);
 
 }
 

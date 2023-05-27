@@ -12,6 +12,7 @@ router.post("/crear", instalacionController.save);
 
 router.get("/todos", instalacionController.findAll);
 
+router.get("/porID/:id", instalacionController.findbyid);
 //UPDATE
 router.put("/actualizar", instalacionController.update);
 

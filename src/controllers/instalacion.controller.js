@@ -61,6 +61,22 @@ instalacionController.findAll = async (req, res, next) => {
     }
 }
 
+instalacionController.findbyid = async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const {status, content} = await Services.instalacionService.findbyId(id);
+
+        if (!status) {
+            return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", content));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Resultado exitoso", content));
+    } catch (e) {
+        next(e);
+    }
+}
+
+
 instalacionController.update = async (req, res, next) => {
     try {
         const {status, content} = await Services.instalacionService.update(req.body);

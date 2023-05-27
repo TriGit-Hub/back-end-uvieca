@@ -5,7 +5,7 @@ const electricistaService = {}
 
 //TODO: Change error attributes as needed
 electricistaService.save = async (carnet, dui, email, nit, nombre, registro, telefono) => {
-
+    var idele = "";
     const result = await db.sequelize.transaction(async (t) => {
 
         const newNitCopy = await db.Copia_dui.create({
@@ -27,10 +27,10 @@ electricistaService.save = async (carnet, dui, email, nit, nombre, registro, tel
             copiaDuiId: newNitCopy.dataValues.id,
             copiaCarnetId: newCarnetCopy.dataValues.id,
         }, {transaction: t});
-        return ServiceResponse(true, newElectricista.dataValues.id);
+        idele= newElectricista.dataValues.id;
     });
 
-    return ServiceResponse(true, null);
+    return ServiceResponse(true, idele);
 
 }
 

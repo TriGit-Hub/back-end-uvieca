@@ -2,6 +2,11 @@ const {Sequelize, DataTypes} = require('sequelize');
 
 const electricista = (sequelize) => {
     const electricista = sequelize.define('electricista', {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
             carnet: {
                 type: DataTypes.STRING,
                 unique: true,

@@ -9,27 +9,27 @@ const clientes = (sequelize) => {
             },
             act_economica: {
                 type: DataTypes.STRING,
-             
+                unique: false,
                 allowNull: false,
             },
             email: {
                 type: DataTypes.STRING,
-             
+                unique: false,
                 allowNull: false,
             },
             nit: {
                 type: DataTypes.STRING,
-                unique: true,
+                unique: false,
                 allowNull: false,
             },
             constitucion_empresa: {
                 type: DataTypes.BIGINT,
-              
+                unique: false,
                 allowNull: false,
             },
             nrc: {
                 type: DataTypes.STRING,
-               
+                unique: false,
                 allowNull: false,
             },
             nombre: {
@@ -42,7 +42,7 @@ const clientes = (sequelize) => {
             },
             telefono: {
                 type: DataTypes.STRING,
-               
+                unique: false,
                 allowNull: false,
             }
         },

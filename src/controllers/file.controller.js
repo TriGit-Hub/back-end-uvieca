@@ -44,4 +44,28 @@ file.obtenerPdfSolicitud = async (req, res, next) => {
     }
 };
 
+file.obtenerPdfContrato = async (req, res, next) => {
+    try {
+
+        const url = path.join(__dirname, `/../../public/contratofill.pdf`);
+        const existingPdfBytes = fs.readFileSync(url);
+
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+        const form = pdfDoc.getForm();
+
+        Object.keys(req.body).forEach((element) => {
+            const field = form.getTextField(element)
+            field.setText(req.body[element])
+        })
+
+        const pdfFinal = await pdfDoc.saveAsBase64();
+
+        return res.status(200).json(ApiResponse(true, "PDF creado con exito", pdfFinal));
+    } catch (e) {
+        next(e);
+        return res.status(507).json(ApiResponse(true, "trono",e));
+    }
+};
+
 module.exports = file;

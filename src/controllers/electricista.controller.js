@@ -59,6 +59,23 @@ electricistaController.findByDui = async (req, res, next) => {
     }
 }
 
+electricistaController.findById = async (req, res, next) => {
+    try {
+
+        const {id} = req.params;
+
+        const {status, content} = await Services.electricistaService.findByDui(id);
+
+        if (!status) {
+            return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", content));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Resultados exitosos", content));
+    } catch (e) {
+        next(e);
+    }
+}
+
 electricistaController.deleteByDui = async (req, res, next) => {
     try {
 

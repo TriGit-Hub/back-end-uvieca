@@ -31,6 +31,21 @@ solicitudController.findAll = async (req, res, next) => {
     }
 }
 
+solicitudController.deleteAll = async (req, res, next) => {
+    try {
+        const {status, content} = await Services.solicitudService.deleteAll();
+
+        if (!status) {
+            return res.status(300).json(ApiResponse(status, "No hay solicitudes"));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Datos encontrados", content));
+
+    } catch (e) {
+        next(e);
+    }
+}
+
 solicitudController.findByCliente = async (req, res, next) => {
     try {
 

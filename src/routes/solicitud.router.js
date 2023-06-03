@@ -31,5 +31,5 @@ router.put("/cambiarEstado", solicitudController.changeStatus);
 router.put("/asignarElectricista", solicitudController.addElectricist);
 
 //DELETE
-
+router.get("/delete/todos", solicitudController.deleteAll);
 module.exports = router;

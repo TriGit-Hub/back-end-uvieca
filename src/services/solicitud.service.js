@@ -60,6 +60,24 @@ solicitudService.findAll = async () => {
     return ServiceResponse(true, result);
 }
 
+solicitudService.deleteAll = async () => {
+    const result = await db.Solicitud.findAll(
+        {
+            order: [['createdAt', 'DESC']],
+            include: [
+                {model: db.Cliente, attributes: ['nombre']},
+                {model: db.Electricista, attributes: ['nombre']},
+                {model: db.Info_facturacion}
+            ]
+        });
+        await result.destroy();
+    if (result === null) {
+        return ServiceResponse(false, null);
+    }
+
+    return ServiceResponse(true, result);
+}
+
 solicitudService.findByCliente = async (clienteId) => {
 
     const result = await db.Solicitud.findAll(

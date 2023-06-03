@@ -64,7 +64,7 @@ electricistaController.findById = async (req, res, next) => {
 
         const {id} = req.params;
 
-        const {status, content} = await Services.electricistaService.findByDui(id);
+        const {status, content} = await Services.electricistaService.findById(id);
 
         if (!status) {
             return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", content));

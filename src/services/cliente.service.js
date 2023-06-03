@@ -37,8 +37,9 @@ clienteService.save = async (act_economica, email, nit, constitucion_empresa, nr
             copiaNcrId: newNrcCopy ? newNrcCopy.dataValues.id : null,
             copiaNitId: newNitCopy ? newNitCopy.dataValues.id : null,
         }, {transaction: t});
-
-        return ServiceResponse(true, newClient.dataValues.id);
+        console.log("newClient's auto-generated ID:", newClient.id);
+        console.log("newClient's auto-generated ID:", newClient.dataValues.id);
+        return ServiceResponse(true, newClient.id);
     });
 
     return ServiceResponse(result.status, result.content);

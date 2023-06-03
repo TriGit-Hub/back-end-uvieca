@@ -11,7 +11,7 @@ router.post("/crear", electricistaController.save);
 //READ
 router.get("/todos", electricistaController.findAll);
 router.get("/porDui/:dui", electricistaController.findByDui);
-router.get("/porDui/:id", electricistaController.findById);
+router.get("/porId/:id", electricistaController.findById);
 //UPDATE
 
 router.put("/actualizar", electricistaController.update);

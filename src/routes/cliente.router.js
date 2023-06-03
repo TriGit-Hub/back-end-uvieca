@@ -24,7 +24,7 @@ router.post("/crear", upload.array('files', 3), clienteController.save);
 //READ
 router.get("/todos", clienteController.findAll);
 router.get("/porNit/:nit", clienteController.findByNit);
-
+router.get("/porId/:id", clienteController.findByID);
 //UPDATE
 
 router.put("/actualizar", clienteController.update);

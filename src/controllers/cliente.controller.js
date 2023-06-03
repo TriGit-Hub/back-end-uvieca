@@ -59,6 +59,24 @@ clienteController.findByNit = async (req, res, next) => {
 
 }
 
+clienteController.findByID = async (req, res, next) => {
+
+    try {
+        const {id} = req.params;
+
+        const {status, content} = await Services.clienteService.findById(id);
+
+        if(!status){
+            return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", null));
+        }
+
+        return res.status(200).json(ApiResponse(status, "Resultados exitosos", content));
+    } catch (e) {
+        next(e)
+    }
+
+}
+
 clienteController.deleteById = async (req, res, next) => {
 
     try {

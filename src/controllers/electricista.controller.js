@@ -21,7 +21,7 @@ electricistaController.save = async (req, res, next) => {
             content
         } = await Services.electricistaService.save(carnet, dui, email, nit, nombre, registro, telefono);
 
-        return res.status(200).json(ApiResponse(status, "Datos insertados con exito"));
+        return res.status(200).json(ApiResponse(status, "Datos insertados con exito",content));
     } catch (e) {
         next(e);
     }

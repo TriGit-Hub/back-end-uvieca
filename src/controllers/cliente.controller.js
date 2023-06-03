@@ -21,7 +21,7 @@ clienteController.save = async (req, res, next) => {
             content
         } = await Services.clienteService.save(act_economica, email, nit, constitucion_empresa, nrc, nombre, razon_social, telefono, req.files);
 
-        return res.status(200).json(ApiResponse(status, content));
+        return res.status(200).json(ApiResponse(status, "Datos insertados con exito",content));
     } catch (e) {
         next(e);
     }

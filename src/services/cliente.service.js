@@ -69,8 +69,8 @@ clienteService.findByNit = async (nit) => {
 }
 
 clienteService.deleteById = async (id) => {
-    const result = await db.Cliente.delete({where: {id}});
-
+    const result = await db.Cliente.findOne({where: {id}});
+    await result.destroy();
     if (result === null) {
         return ServiceResponse(false, null);
     }

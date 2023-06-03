@@ -27,7 +27,7 @@ electricistaService.save = async (carnet, dui, email, nit, nombre, registro, tel
             copiaDuiId: newNitCopy.dataValues.id,
             copiaCarnetId: newCarnetCopy.dataValues.id,
         }, {transaction: t});
-        return ServiceResponse(true, newElectricista.dataValues.id);
+        return ServiceResponse(true, newElectricista.id);
     });
 
     return ServiceResponse(result.status, result.content);
@@ -56,8 +56,8 @@ electricistaService.findByDui = async (dui) => {
 }
 
 electricistaService.deleteByDui = async (dui) => {
-    const result = await db.Electricista.delete({where: {dui}});
-
+    const result = await db.Electricista.findOne({where: {dui}});
+    await result.destroy();
     if (result === null) {
         return ServiceResponse(false, null);
     }

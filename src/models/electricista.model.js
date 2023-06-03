@@ -9,22 +9,22 @@ const electricista = (sequelize) => {
         },
             carnet: {
                 type: DataTypes.STRING,
-                unique: true,
+                unique: false,
                 allowNull: false,
             },
             dui: {
                 type: DataTypes.STRING,
-                unique: true,
+                unique: false,
                 allowNull: false,
             },
             email: {
                 type: DataTypes.STRING,
-                unique: true,
+                unique: false,
                 allowNull: false,
             },
             nit: {
                 type: DataTypes.STRING,
-                unique: true,
+                unique: false,
                 allowNull: false,
             },
             nombre: {
@@ -33,12 +33,12 @@ const electricista = (sequelize) => {
             },
             registro: {
                 type: DataTypes.STRING,
-                unique: true,
+                unique: false,
                 allowNull: false,
             },
             telefono: {
                 type: DataTypes.STRING,
-                unique: true,
+                unique: false,
                 allowNull: false,
             },
         },

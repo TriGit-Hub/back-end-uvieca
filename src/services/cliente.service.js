@@ -67,6 +67,16 @@ clienteService.findByNit = async (nit) => {
     return ServiceResponse(true, result);
 }
 
+clienteService.deleteById = async (id) => {
+    const result = await db.Cliente.delete({where: {id}});
+
+    if (result === null) {
+        return ServiceResponse(false, null);
+    }
+
+    return ServiceResponse(true, result);
+}
+
 clienteService.update = async (cliente) => {
 
     const result = await db.Cliente.findByPk(cliente.id);

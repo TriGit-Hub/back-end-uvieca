@@ -30,5 +30,5 @@ router.get("/porNit/:nit", clienteController.findByNit);
 router.put("/actualizar", clienteController.update);
 
 //DELETE
-
+router.get("/porNit/:id", clienteController.deleteById);
 module.exports = router;

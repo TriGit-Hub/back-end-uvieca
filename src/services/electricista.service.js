@@ -55,6 +55,17 @@ electricistaService.findByDui = async (dui) => {
 
 }
 
+electricistaService.deleteByDui = async (dui) => {
+    const result = await db.Electricista.delete({where: {dui}});
+
+    if (result === null) {
+        return ServiceResponse(false, null);
+    }
+
+    return ServiceResponse(true, result);
+
+}
+
 electricistaService.update = async (electricista) => {
 
     const result = await db.Electricista.findByPk(electricista.id);

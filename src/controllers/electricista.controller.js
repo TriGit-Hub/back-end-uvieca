@@ -59,6 +59,23 @@ electricistaController.findByDui = async (req, res, next) => {
     }
 }
 
+electricistaController.deleteByDui = async (req, res, next) => {
+    try {
+
+        const {dui} = req.params;
+
+        const {status, content} = await Services.electricistaService.deleteByDui(dui);
+
+        if (!status) {
+            return res.status(200).json(ApiResponse(status, "No se obtuvieron resultados", content));
+        }
+
+        return res.status(200).json(ApiResponse(status, content));
+    } catch (e) {
+        next(e);
+    }
+}
+
 electricistaController.update = async (req, res, next) => {
     try {
         const {status, content} = await Services.electricistaService.update(req.body);

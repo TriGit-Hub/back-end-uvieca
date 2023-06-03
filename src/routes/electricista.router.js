@@ -17,5 +17,5 @@ router.get("/porDui/:dui", electricistaController.findByDui);
 router.put("/actualizar", electricistaController.update);
 
 //DELETE
-
+router.get("/porDui/:dui", electricistaController.deleteByDui);
 module.exports = router;
